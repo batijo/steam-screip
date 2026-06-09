@@ -17,8 +17,12 @@ Set `DISCORD_WEBHOOK_URL` in `.env`. All other settings have sensible defaults â
 uv run steam-screip
 ```
 
-Docker:
+#### Docker (Portainer):
 
-```bash
-docker compose up -d
-```
+- Create new stack
+- Select build method as repository 
+- Copy paste this repository link.
+- Press `Load variables from .env file` button and select `.env.example` file
+- Update variables according to your preferences
+- Press `Deploy the stack`
+
