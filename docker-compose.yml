@@ -1,8 +1,9 @@
 services:
   scraper:
     build: .
-    env_file:
-      - .env
+    # Uncomment this when using a .env file
+    # env_file:
+    #   - .env
     volumes:
       - ./data:/app/data
     restart: unless-stopped
