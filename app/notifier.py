@@ -11,9 +11,10 @@ class NotifierError(Exception):
 
 
 def _build_payload(settings: Settings, game: Game) -> dict:
+    template = settings.discord_message_template.replace("\\n", "\n")
     payload: dict = {
         "username": settings.discord_username,
-        "content": settings.discord_message_template.format(
+        "content": template.format(
             name=game.name,
             steam_url=game.steam_url,
         ),
