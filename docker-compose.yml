@@ -5,5 +5,8 @@ services:
     # env_file:
     #   - .env
     volumes:
-      - ./data:/app/data
+      - scraper_data:/app/data
     restart: unless-stopped
+
+volumes:
+  scraper_data:
