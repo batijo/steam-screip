@@ -9,7 +9,7 @@ uv sync
 cp .env.example .env
 ```
 
-Set `DISCORD_WEBHOOK_URL` in `.env`. All other settings have sensible defaults — see `.env.example` for parser XPaths, scraper headers, message template, and retention.
+Set `DISCORD_WEBHOOK_URL` or `DISCORD_WEBHOOK_URLS` in `.env`. `DISCORD_WEBHOOK_URLS` accepts a comma- or newline-separated list of webhook URLs. All other settings have sensible defaults — see `.env.example` for parser XPaths, scraper headers, message template, and retention.
 
 ## Run
 

@@ -1,3 +1,6 @@
+import re
+
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -9,6 +12,7 @@ class Settings(BaseSettings):
     )
 
     discord_webhook_url: str = ""
+    discord_webhook_urls: list[str] = []
     database_path: str = "data/db.json"
     scrape_interval_seconds: int = 300
     log_level: str = "INFO"
@@ -16,6 +20,30 @@ class Settings(BaseSettings):
     discord_avatar_url: str = ""
     discord_message_template: str = "🎮 New Free Steam Game\n\n{name}\n{steam_url}"
     steamdb_sales_url: str = "https://steamdb.info/sales/?sort=discount_desc"
+
+    @field_validator("discord_webhook_urls", mode="before")
+    @classmethod
+    def _parse_discord_webhook_urls(cls, value):
+        if isinstance(value, str):
+            return [url.strip() for url in re.split(r"[\n\r,]+", value) if url.strip()]
+        return value
+
+    @property
+    def all_discord_webhook_urls(self) -> list[str]:
+        urls: list[str] = []
+        if self.discord_webhook_url:
+            urls.append(self.discord_webhook_url.strip())
+        for url in self.discord_webhook_urls:
+            if url and url.strip():
+                urls.append(url.strip())
+
+        deduped: list[str] = []
+        seen: set[str] = set()
+        for url in urls:
+            if url not in seen:
+                seen.add(url)
+                deduped.append(url)
+        return deduped
 
     scrape_user_agent: str = (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:150.0) Gecko/20100101 Firefox/150.0"

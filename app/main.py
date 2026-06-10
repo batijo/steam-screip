@@ -31,7 +31,7 @@ def run_scrape(settings: Settings, db: TinyDB) -> None:
     logger.info("Found {} game(s), {} new", len(games), len(new_games))
 
     for game in new_games:
-        if settings.discord_webhook_url:
+        if settings.all_discord_webhook_urls:
             try:
                 send_game_notification(settings, game)
             except NotifierError as exc:
