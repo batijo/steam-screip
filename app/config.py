@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     )
 
     discord_webhook_url: str = ""
-    discord_webhook_urls: list[str] = []
+    discord_webhook_urls: str | list[str] = []
     database_path: str = "data/db.json"
     scrape_interval_seconds: int = 300
     log_level: str = "INFO"
