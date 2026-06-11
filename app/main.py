@@ -53,7 +53,7 @@ def run_scrape(settings: Settings, db: TinyDB) -> None:
 
 def main() -> None:
     settings = Settings()
-    setup_logging(settings.log_level)
+    setup_logging(settings.log_level, settings.log_timezone)
 
     logger.info("Starting steam-screip")
     logger.info("Scrape interval: {} seconds", settings.scrape_interval_seconds)

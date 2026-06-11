@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     database_path: str = "data/db.json"
     scrape_interval_seconds: int = 300
     log_level: str = "INFO"
+    log_timezone: str = ""
     discord_username: str = "Steam Free Games"
     discord_avatar_url: str = ""
     discord_message_template: str = "🎮 New Free Steam Game\n\n{name}\n{steam_url}"
