@@ -12,6 +12,7 @@ dependencies = [
     "pydantic-settings>=2.0",
     "loguru>=0.7",
     "tenacity>=9.0",
+    "tzdata>=2026.2",
 ]
 
 [project.scripts]

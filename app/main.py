@@ -56,6 +56,7 @@ def main() -> None:
     setup_logging(settings.log_level, settings.log_timezone)
 
     logger.info("Starting steam-screip")
+    logger.info("Log timezone: {}", settings.log_timezone)
     logger.info("Scrape interval: {} seconds", settings.scrape_interval_seconds)
     logger.info("Database path: {}", settings.database_path)
 
